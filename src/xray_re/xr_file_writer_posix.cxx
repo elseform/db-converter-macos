@@ -51,14 +51,14 @@ void xr_file_writer_posix::w_raw(const void *data, std::size_t length)
 
 void xr_file_writer_posix::seek(std::size_t pos)
 {
-	auto res = ::lseek64(m_fd, static_cast<off_t>(pos), SEEK_SET);
+	auto res = ::lseek(m_fd, static_cast<off_t>(pos), SEEK_SET);
 
 	assert(static_cast<std::size_t>(res) == pos);
 }
 
 std::size_t xr_file_writer_posix::tell()
 {
-	auto res = ::lseek64(m_fd, 0, SEEK_CUR);
+	auto res = ::lseek(m_fd, 0, SEEK_CUR);
 	if(res == -1)
 	{
 		spdlog::error("Failed to close file descriptor {}: {} (errno={}) ", m_fd, strerror(errno), errno);

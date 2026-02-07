@@ -78,10 +78,10 @@ xr_mmap_reader_posix::~xr_mmap_reader_posix()
 		}
 	}
 
-	auto res = posix_fadvise(m_fd, 0, static_cast<off_t>(m_file_length), POSIX_FADV_DONTNEED); //POSIX_FADV_NOREUSE
+// 	auto res = posix_fadvise(m_fd, 0, static_cast<off_t>(m_file_length), POSIX_FADV_DONTNEED); //POSIX_FADV_NOREUSE
 	if(res != 0)
 	{
-		spdlog::error("posix_fadvise failed: {} (errno={}) ", strerror(errno), errno);
+// 		spdlog::error("posix_fadvise failed: {} (errno={}) ", strerror(errno), errno);
 	}
 
 	res = ::close(m_fd);
